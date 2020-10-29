@@ -4,20 +4,41 @@ let game = prompt("Wanna play a game?");
 
 if(game === "yes") {
   // continue into game 
+  var userChoice = prompt("Rock, Paper, Scissors, Lizard, Spock?");
+  var computerChoice = Math.random();
+  if (computerChoice < 0.20) {
+    computerChoice = "rock";
+  }else if(computerChoice <= 0.80){
+    computerChoice = "paper";
+  }else if(computerChoice <= 0.80) {
+    computerChoice = "spock"
+  }
+   else {
+    computerChoice = "scissors";
+  }
+ 
   ();
 }
 else {
 
 }
 
-
-var userChoice = prompt("Rock, Paper, Scissors, Lizard, Spock?");
+var userChoice = prompt("Do you choose rock, paper or scissors?");
 var computerChoice = Math.random();
 if (computerChoice < 0.34) {
-  computerChoice = "rock";
-}else if(computerChoice <= 0.67){
-  else }
-  computerChoice = 
+    computerChoice = "rock";
+} else if(computerChoice <= 0.67) {
+    computerChoice = "paper";
+} else {
+    computerChoice = "scissors";
+}
+
+
+
+
+
+
+
 
 
 class Game { //to be at minimum a best of three to decide a winner
@@ -39,8 +60,8 @@ class Game { //to be at minimum a best of three to decide a winner
     this.displayRules();
 
     while(this.playerOne.score < 3 && this.playerTwo.score < 3) {
-      let playerOneTotal = this.playerOne.rollAllDice(this.dice);
-      let playerTwoTotal = this.playerTwo.rollAllDice(this.dice);
+      let playerOneTotal = ;
+      let playerTwoTotal = ;
 
       if(playerOneTotal > playerTwoTotal) {
         console.log(this.playerOne.name + " wins this round!");
@@ -51,7 +72,7 @@ class Game { //to be at minimum a best of three to decide a winner
         this.playerTwo.score++;
       }
       else {
-        console.log("Wow! You managed to tie after each rolling " + this.dice.length + " dice!");
+        console.log
       }
     }
     
@@ -67,62 +88,6 @@ class Game { //to be at minimum a best of three to decide a winner
     }
   }
 
-
-
-
-
-
-
-}
-
-
-game : function () {
-    // game() : game on!
-  
-      // Random computer move - Equal 33.3333% chance to get each
-      var comMove = Math.random();
-      if (comMove <= 0.33) { comMove = "rock"; }
-      else if (comMove <= 0.67) { comMove = "paper"; }
-      else { comMove = "scissors"; }
-
-
-
-      // Win, lose, or draw?
-    var youMove = rps.eSel.value;
-    if (youMove == comMove) {
-      rps.draws++;
-      rps.eDraw.innerHTML = rps.draws;
-      alert("DRAW");
-    } else {
-      var win = true;
-      switch (youMove) {
-        case "rock":
-          if (comMove=="paper") { win = false; }
-          break;
-        case "paper":
-          if (comMove=="scissors") { win = false; }
-          break;
-        case "scissors":
-          if (comMove=="rock") { win = false; }
-          break;
-      }
-      if (win) {
-        rps.wins++;
-        rps.eWin.innerHTML = rps.wins;
-        alert("YOU WIN");
-      } else {
-        rps.loses++;
-        rps.eLose.innerHTML = rps.loses;
-        alert("YOU LOSE");
-
-
-
-
-
-
-
-
-
 class Player { //I want to store all of the gesture options/choices in an array. I want to find a
     // way to utilize the array of gestures within my code (display gesture options, assign player a
     // gesture, etc). 
@@ -132,23 +97,6 @@ class Player { //I want to store all of the gesture options/choices in an array.
     displayInformation() {
         console.log("I failed.")
     }
- ///below ex
-  class Player {
-  constructor(name) {
-    this.score = 0;
-    this.name = name;
-  }
-
-
-
-
-
-
-
-
-
-
-
 }
 class Human {// wants the option of a sinlge player (human vs Al) or a multiplayer
     // (human vs human) game.
@@ -178,13 +126,42 @@ class Computer {
         return "Player won!";
       } else if ((playerSelection == "scissors") && (computerSelection == "paper")) {
         return "Player won!";
+      } else if ((playerSelection == "lizard") && (computerSelection == "paper")) {
+        return "Player won!";
+      } else if ((PlayerSelection == "spock") && (somputerSelection == "rock")) {
+        return "Player won!";
+      } else if ((PlayerSelection == "rock") && (computerSelection == "lizard")) {
+        return "Player won!";
+      } else if ((playerSelection == "paper") && (computerSelection == "spock")) {
+        return "Player won!";
+      } else if ((playerSelection == "scissors") && (computerSelection == "lizard")) {
+        return "Player won!";
+      } else if ((playerSelection == "lizard") && (computerSelection == "spock")) {
+        return "Player won!";
+      } else if ((PlayerSelection == "spock") && (somputerSelection == "scissors")) {
+        return "Player won!";
+      // below are ways the computer beats the player
+      } else if ((playerSelection == "rock") && (computerSelection == "paper")) {
+        return "Computer won!";
       } else if ((playerSelection == "paper") && (computerSelection == "scissors")) {
+        return "Computer won!";
+      } else if ((playerSelection == "scissors") && (computerSelection == "spock")) {
+        return "Computer won!";
+      }else if ((playerSelection == "lizard") && (computerSelection == "rock")) {
+        return "Computer won!";
+      }else if ((playerSelection  == "spock") && (computerSelection == "lizard")) {
+        return "Computer won!";
+
+      }else if ((playerSelection == "rock") && (computerSelection == "spock")) {
+        return "Computer won!";
+      } else if ((playerSelection == "paper") && (computerSelection == "lizard")) {
         return "Computer won!";
       } else if ((playerSelection == "scissors") && (computerSelection == "rock")) {
         return "Computer won!";
-      } else if ((playerSelection == "rock") && (computerSelection == "paper")) {
+      }else if ((playerSelection == "lizard") && (computerSelection == "scissors")) {
         return "Computer won!";
-      }
+      }else if ((playerSelection  == "spock") && (computerSelection == "paper")) {
+        return "Computer won!";
     }
 
     var userChoice = prompt("Do you choose rock, paper or scissors?");
