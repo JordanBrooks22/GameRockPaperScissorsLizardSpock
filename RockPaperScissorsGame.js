@@ -1,45 +1,49 @@
 "use strict";
 
-let game = prompt("Wanna play a game?");
+function questionOne(question, valid){
+  do{
+    let responseOne = promptFor("Wanna play a game?").trim();
+  } while(!response || !valid(response));
+  return response;
 
-if(game === "yes") {
-  // continue into game 
-  var userChoice = prompt("Rock, Paper, Scissors, Lizard, Spock?");
+
+ if(game === "yes") {
+  // continue into below 
+  var userChoice = prompt("Do you choose rock, paper, scissors, lizard or spock?");
   var computerChoice = Math.random();
   if (computerChoice < 0.20) {
     computerChoice = "rock";
   }else if(computerChoice <= 0.80){
     computerChoice = "paper";
   }else if(computerChoice <= 0.80) {
-    computerChoice = "spock"
+    computerChoice = "spock";
+  }else if(computerChoice <= 0.80) {
+    computerChoice = "lizard";
+  }else if(computerChoice <= 0.08) {
+  computerChoice = "scissors";
+   }
+
+}
+
+
+  
+  function promptFor(question, valid){
+    do{
+      var response = prompt(question).trim();
+    } while(!response || !valid(response));
+    return response;
   }
-   else {
-    computerChoice = "scissors";
+
+
+  function yesNo(input){
+    return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
   }
- 
-  ();
+  
+
+
+
+
 }
-else {
-
-}
-
-var userChoice = prompt("Do you choose rock, paper or scissors?");
-var computerChoice = Math.random();
-if (computerChoice < 0.34) {
-    computerChoice = "rock";
-} else if(computerChoice <= 0.67) {
-    computerChoice = "paper";
-} else {
-    computerChoice = "scissors";
-}
-
-
-
-
-
-
-
-
 
 class Game { //to be at minimum a best of three to decide a winner
     constructor(name){
