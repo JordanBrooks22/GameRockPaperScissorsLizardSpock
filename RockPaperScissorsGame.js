@@ -4,7 +4,6 @@ function questionOne(question, valid){
   do{
     let responseOne = promptFor("Wanna play a game?").trim();
   } while(!response || !valid(response));
-  return response;
 
 
  if(game === "yes") {
@@ -23,6 +22,7 @@ function questionOne(question, valid){
   computerChoice = "scissors";
    }
 
+}
 }
 
 
@@ -43,18 +43,20 @@ function questionOne(question, valid){
 
 
 
-}
+
 
 class Game { //to be at minimum a best of three to decide a winner
-    constructor(name){
-        this.name = name;
-    }
+    constructor(){
+        this.playerOne = null;
+        this.playTwo = null;
+    }   
     displayInformation() {
         console.log("I failed.")
  
  
  
     }
+    this
 
 
 
@@ -91,18 +93,22 @@ class Game { //to be at minimum a best of three to decide a winner
       console.log(this.playerTwo.name + " wins this round!");
     }
   }
+}
 
 class Player { //I want to store all of the gesture options/choices in an array. I want to find a
     // way to utilize the array of gestures within my code (display gesture options, assign player a
     // gesture, etc). 
     constructor(name){
         this.name = name;
+        this.score = 0;
+        this.gestures = ["rock", "paper", new Gesture("scissors", "paper", "lizard"), new Gesture("","", "")];
+    
     }
     displayInformation() {
-        console.log("I failed.")
+      console.log("I failed.")
     }
-}
-class Human {// wants the option of a sinlge player (human vs Al) or a multiplayer
+  }
+class Human extends Player {// wants the option of a sinlge player (human vs Al) or a multiplayer
     // (human vs human) game.
     constructor(name){
         this.name = name;
@@ -111,62 +117,15 @@ class Human {// wants the option of a sinlge player (human vs Al) or a multiplay
         console.log("I failed.")
     }
 }
-class Computer {
+class Computer extends Player {
     constructor(name){
-        this.name = name;
+        super(name);
     }
     displayInformation() {
         console.log("I failed.")
     }
 }
 
-
-//function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        return 'Draw!';
-      } else if ((playerSelection == "rock") && (computerSelection == "scissors")) {
-        return "Player won!";
-      } else if ((playerSelection == "paper") && (computerSelection == "rock")) {
-        return "Player won!";
-      } else if ((playerSelection == "scissors") && (computerSelection == "paper")) {
-        return "Player won!";
-      } else if ((playerSelection == "lizard") && (computerSelection == "paper")) {
-        return "Player won!";
-      } else if ((PlayerSelection == "spock") && (somputerSelection == "rock")) {
-        return "Player won!";
-      } else if ((PlayerSelection == "rock") && (computerSelection == "lizard")) {
-        return "Player won!";
-      } else if ((playerSelection == "paper") && (computerSelection == "spock")) {
-        return "Player won!";
-      } else if ((playerSelection == "scissors") && (computerSelection == "lizard")) {
-        return "Player won!";
-      } else if ((playerSelection == "lizard") && (computerSelection == "spock")) {
-        return "Player won!";
-      } else if ((PlayerSelection == "spock") && (somputerSelection == "scissors")) {
-        return "Player won!";
-      // below are ways the computer beats the player
-      } else if ((playerSelection == "rock") && (computerSelection == "paper")) {
-        return "Computer won!";
-      } else if ((playerSelection == "paper") && (computerSelection == "scissors")) {
-        return "Computer won!";
-      } else if ((playerSelection == "scissors") && (computerSelection == "spock")) {
-        return "Computer won!";
-      }else if ((playerSelection == "lizard") && (computerSelection == "rock")) {
-        return "Computer won!";
-      }else if ((playerSelection  == "spock") && (computerSelection == "lizard")) {
-        return "Computer won!";
-
-      }else if ((playerSelection == "rock") && (computerSelection == "spock")) {
-        return "Computer won!";
-      } else if ((playerSelection == "paper") && (computerSelection == "lizard")) {
-        return "Computer won!";
-      } else if ((playerSelection == "scissors") && (computerSelection == "rock")) {
-        return "Computer won!";
-      }else if ((playerSelection == "lizard") && (computerSelection == "scissors")) {
-        return "Computer won!";
-      }else if ((playerSelection  == "spock") && (computerSelection == "paper")) {
-        return "Computer won!";
-    }
 
     var userChoice = prompt("Do you choose rock, paper or scissors?");
 var computerChoice = Math.random();
@@ -211,3 +170,12 @@ if(choice1 === "scissors") {
 console.log("User Choice: " + userChoice);
 console.log("Computer Choice: " + computerChoice);
 compare(userChoice, computerChoice);
+
+class Gesture{
+  constructor(name,beatsOne,beatsTwo){
+    this.name
+    this.beatsOne
+    this.beatsTwo
+  }
+}
+let gesture = new Gesture("rock","scissors","lizard")
