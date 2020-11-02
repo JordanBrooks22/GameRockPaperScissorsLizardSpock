@@ -1,5 +1,15 @@
 "use strict";
 
+
+// players roll all 6 dice and add up their score
+// compare the two totals of each player
+// higher total gets a point
+// first to three
+
+
+// two player game
+// display rules
+
 function questionOne(question, valid){
   do{
     let responseOne = promptFor("Wanna play a game?").trim();
@@ -48,26 +58,15 @@ function questionOne(question, valid){
 class Game { //to be at minimum a best of three to decide a winner
     constructor(){
         this.playerOne = null;
-        this.playTwo = null;
+        this.playerTwo = null;
     }   
-    displayInformation() {
-        console.log("I failed.")
- 
- 
- 
-    }
-    this
-
-
-
-
     // perfect example for best out of three wins 
     runGame() {  // "main" method
     this.displayRules();
 
     while(this.playerOne.score < 3 && this.playerTwo.score < 3) {
-      let playerOneTotal = ;
-      let playerTwoTotal = ;
+      let playerOneTotal = ""
+      let playerTwoTotal = ""
 
       if(playerOneTotal > playerTwoTotal) {
         console.log(this.playerOne.name + " wins this round!");
@@ -78,7 +77,7 @@ class Game { //to be at minimum a best of three to decide a winner
         this.playerTwo.score++;
       }
       else {
-        console.log
+        console.log("Wow! You managed to tie after each rolling " + this.dice.length + " dice!");
       }
     }
     
@@ -90,83 +89,131 @@ class Game { //to be at minimum a best of three to decide a winner
       console.log(this.playerOne.name + " wins this game!");
     }
     else {
-      console.log(this.playerTwo.name + " wins this round!");
+      console.log(this.playerTwo.name + " wins this game!");
     }
   }
 }
-
-class Player { //I want to store all of the gesture options/choices in an array. I want to find a
-    // way to utilize the array of gestures within my code (display gesture options, assign player a
-    // gesture, etc). 
+class Player {
     constructor(name){
         this.name = name;
         this.score = 0;
-        this.gestures = ["rock", "paper", new Gesture("scissors", "paper", "lizard"), new Gesture("","", "")];
-    
+        this.gestures = ["rock", "paper", "scissors", "lizard", "spock"];
     }
+
+    // need help here
     displayInformation() {
-      console.log("I failed.")
+      console.log(this.gestures)
     }
   }
-class Human extends Player {// wants the option of a sinlge player (human vs Al) or a multiplayer
+
+  class Human extends Player {// wants the option of a sinlge player (human vs Al) or a multiplayer
+
     // (human vs human) game.
     constructor(name){
         this.name = name;
     }
     displayInformation() {
-        console.log("I failed.")
+        console.log("i failed")
     }
-}
-class Computer extends Player {
-    constructor(name){
+  }
+  class Computer extends Player {
+    // (human vs computer) game.
+  constructor(name){
         super(name);
     }
+    // methods example below
     displayInformation() {
-        console.log("I failed.")
+        console.log("hi")
     }
 }
 
-
-    var userChoice = prompt("Do you choose rock, paper or scissors?");
+//
+//also check into this var below
+var userChoice = prompt("Do you choose rock, paper, scissors, lizard or spock?");
 var computerChoice = Math.random();
-if (computerChoice < 0.34) {
+if (computerChoice < 0.80){
     computerChoice = "rock";
-} else if(computerChoice <= 0.67) {
+} else if(computerChoice <= 0.80){
     computerChoice = "paper";
-} else {
+    } else 
     computerChoice = "scissors";
+    else { 
+      computerChoice = "lizard";
+      else { 
+        computerChoice = "spock";
+      }
+    }
+  
+  
+  } 
 }
 
-var compare = function(choice1, choice2) {
-    if(choice1 === choice2) {
+
+var compare = function(choice1, choice2){
+    if(choice1 === choice2){
     return "The result is a tie!";
 }
-if(choice1 === "rock") {
-    if(choice2 === "scissors") {
+if(choice1 === "rock"){
+    if(choice2 === "scissors" || chocie2 === "Lizard"){
         return "rock wins";
     } else {
-        return "paper wins";
+      if(choice2 === "spock"){
+        return "spock wins";
+      } if(choice2 === "paper"){
+        return "paper wins"
+      }
+        
     }
+  }
 }
-if(choice1 === "paper") {
-    if(choice2 === "rock") {
+if(choice1 === "paper"){
+    if(choice2 === "rock" || choice2 === "Spock"){
         return "paper wins";
     } else {
-        if(choice2 === "scissors") {
-            return "scissors wins";
-    }
+        if(choice2 === "scissors"){
+       return "scissors wins";}
+      if(choice2 === "Lizard"){
+       return "Lizard wins"
+      } 
+    }     
+   
 }
-if(choice1 === "scissors") {
-    if(choice2 === "rock") {
+if(choice1 === "scissors"){
+    if(choice2 === "rock" || choice2 === "Lizards"){
         return "rock wins";
     } else {
-        if(choice2 === "paper") {
+        if(choice2 === "paper"){
             return "scissors wins";
+        }
+        if(choice2 === "spock"){
+          return "spock wins"
         }
     }
 }
+if(choice1 === "Lizard"){
+  if(choice2 === "spock" || choice2 === "Paper"){
+    return "lizards wins";
+  } else {
+    if(choice2 === "Rock"){
+    return "Rock wins"
+  }
+  if(choice2 === "scissors"){
+    return "scissors wins"
+  }
 }
-};
+if(choice1 === "Spock"){
+  if(choice2 === "scissors" || choice2 === "Rock"){
+    return "Spock wins";
+  } else {
+    if(choice2 === "Paper" ){
+      return "Paper wins"
+    }
+    if(choice2 === "Lizard"){
+      return "Lizard wins"
+    }
+
+  }
+}
 console.log("User Choice: " + userChoice);
 console.log("Computer Choice: " + computerChoice);
 compare(userChoice, computerChoice);
@@ -179,3 +226,10 @@ class Gesture{
   }
 }
 let gesture = new Gesture("rock","scissors","lizard")
+
+
+displayRules() {
+  console.log("Welcome to the game of rock paper scissors lizard spock!")
+  console.log("Two players will play")
+  console.log("The first player to three points will win the game!");
+}
