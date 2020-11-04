@@ -28,21 +28,50 @@ function questionOne(question, valid){
   }
 } 
 
-class Game { //to be at minimum a best of three to decide a winner
+class Game { 
     constructor(){
         this.playerOne = null;
         this.playerTwo = null;
     }   
-    // perfect example for best out of three wins 
+  
+    gameSetup()
+    {//asks users if they want to play against human or ai or ai against
+      //assign player 1 and 2 based on input
+      //switch case
+      var waysToPlay = prompt("press 1 for human vs human \npress 2 for human vs computer\npress 3 for computer vs computer")
+     
+      switch(waysToPlay) {
+        case '1':
+          this.playerOne = new Human();
+          this.playerTwo = new Human();
+        break;
+        case '2':
+          this.playerOne = new Human();
+          this.playerTwo = new Computer();
+    
+        break;
+        case '3':
+          this.playerOne = new Computer();
+          this.playerTwo = new Computer();
+    
+        break;
+        default:
+        this.gameSetup();
+        break;
+      }
+
+
+    }
     runGame() {  // "main" method
     this.displayRules();
+    this.gameSetup();
 
     while(this.playerOne.score < 3 && this.playerTwo.score < 3) {
         this.playerOne.chooseGesture();
         this.playerTwo.chooseGesture();
         this.compareGesture(this.playerOne.chosenGesture, this.playerTwo.chosenGesture)
       }
-      this.displayGameWinner();
+    
       // if(playerOneTotal > playerTwoTotal) {
       //   console.log(this.playerOne.name + " wins this round!");
       //   this.playerOne.score++;
@@ -59,69 +88,84 @@ class Game { //to be at minimum a best of three to decide a winner
   }
   compareGesture(choice1, choice2){
     if(choice1 === choice2){
-    return "The result is a tie!";
+      console.log("The result is a tie!");
    }
    if(choice1 === "rock"){
     if(choice2 === "scissors" || chocie2 === "Lizard"){
-      return "rock wins";
+      console.log("rock wins");
+      this.playerOne.score++;
     } else {
       if(choice2 === "spock"){
-        return "spock wins";
+        console.log("spock wins");
+        this.playerTwo.score++;
       } else {
         if(choice2 === "paper"){
-          return "paper wins"
+          console.log("paper wins")
+          this.playerTwo.score++;
         }
       } 
     }
    }
    if(choice1 === "paper"){
     if(choice2 === "rock" || choice2 === "Spock"){
-        return "paper wins";
+        console.log("paper wins");
+        this.playerOne.score++;
     } else {
       if(choice2 === "scissors"){
-       return "scissors wins";
+       console.log("scissors wins");
+       this.playerTwo.score++;
       } else {
         if(choice2 === "Lizard"){
-          return "lizard wins"
+          console.log("lizard wins");
+          this.playerTwo.score++;
         }
       }
     } 
    } 
    if(choice1 === "scissors"){
     if(choice2 === "rock" || choice2 === "Lizards"){
-        return "rock wins";
+        console.log("rock wins");
+        this.playerOne.score++;
    } else {
      if(choice2 === "paper"){
-       return "scissors wins";
+       console.log("scissors wins");
+       this.playerTwo.score++;
       } else {
         if(choice2 === "spock"){
-          return "spock wins"
+          console.log("spock wins");
+          this.playerTwo.score++;
         }
       }   
     }
    }
    if(choice1 === "Lizard"){
       if(choice2 === "spock" || choice2 === "Paper"){
-        return "lizards wins";
+        console.log("lizards wins");
+        this.playerOne.score++;
    } else {
      if(choice2 === "rock"){
-       return "rock wins";
+       console.log("rock wins");
+       this.playerOne.score++;
       } else { 
         if(choice2 === "scissors"){
-         return "scissors wins"
+         console.log("scissors wins");
+         this.playerTwo.score++;
         }
       }
     }
    } 
-   if(choice1 === "Spock"){
+   if(choice1 === "spock"){
      if(choice2 === "scissors" || choice2 === "Rock"){
-       return "Spock wins";
+       console.log("Spock wins");
+       this.playerOne.score++;
       } else {
         if(choice2 === "Paper" ){
-          return "Paper wins"
+          console.log("Paper wins");
+          this.playerTwo.score++;
         } else {
           if(choice2 === "Lizard"){
-            return "Lizard wins"
+            console.log("Lizard wins")
+            this.playerTwo.score++;
           }
         } 
       }   
@@ -140,6 +184,10 @@ class Game { //to be at minimum a best of three to decide a winner
       console.log(this.playerTwo.name + " wins this game!");
     }
   }
+  displayRules()
+  { //display the rules of rock paper scissors
+
+  }
 }
 class Player {
     constructor(name){
@@ -148,6 +196,10 @@ class Player {
         this.gestures = ["rock", "paper", "scissors", "lizard", "spock"];
         this.chosenGesture = null;
       }
+
+
+
+      
 
     // need help here
     displayInformation() {
@@ -162,28 +214,46 @@ class Player {
         super(name);
     }
     displayInformation() {
-        console.log("i failed once again")
+        console.log("human vs human game!")
     }
     chooseGesture(){
+      console.log("chooseGesture")
+
+      this.gestures
+      //work on this tmrw
+
+
+
       //take user input to select a gesture
-      //this.chosenGesture =  //set equal to a gesture
+      this.chosenGesture =  //set equal to a gesture
     }
   }
   class Computer extends Player {
     // (human vs computer) game.
-  constructor(name){
+   constructor(name){
         super(name);
     }
     // methods example below
     displayInformation() {
-        console.log("hi")
+        console.log("human vs computer game!")
     }
     chooseGesture(){
       //use random to select gesture
     }
+  } 
+  class ComputerVsComputer extends Player {
+    // (computer vs computer) game.
+    constructor(name){
+        super(name);
+      }
+      displayInformation(){
+        console.log("computer vs computer!")
+       }
+       chosenGesture(){
 
-} 
+       }
+   }
+ 
 
-class Gesture{
-
-
+let game = new Game();
+game.runGame();
