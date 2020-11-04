@@ -35,9 +35,7 @@ class Game {
     }   
   
     gameSetup()
-    {//asks users if they want to play against human or ai or ai against
-      //assign player 1 and 2 based on input
-      //switch case
+    {
       var waysToPlay = prompt("press 1 for human vs human \npress 2 for human vs computer\npress 3 for computer vs computer")
      
       switch(waysToPlay) {
@@ -107,7 +105,7 @@ class Game {
     }
    }
    if(choice1 === "paper"){
-    if(choice2 === "rock" || choice2 === "Spock"){
+    if(choice2 === "rock" || choice2 === "spock"){
         console.log("paper wins");
         this.playerOne.score++;
     } else {
@@ -123,7 +121,7 @@ class Game {
     } 
    } 
    if(choice1 === "scissors"){
-    if(choice2 === "rock" || choice2 === "Lizards"){
+    if(choice2 === "rock" || choice2 === "lizards"){
         console.log("rock wins");
         this.playerOne.score++;
    } else {
@@ -185,8 +183,7 @@ class Game {
     }
   }
   displayRules()
-  { //display the rules of rock paper scissors
-
+  {
   }
 }
 class Player {
@@ -196,12 +193,6 @@ class Player {
         this.gestures = ["rock", "paper", "scissors", "lizard", "spock"];
         this.chosenGesture = null;
       }
-
-
-
-      
-
-    // need help here
     displayInformation() {
       console.log(this.gestures)
     }
@@ -219,10 +210,16 @@ class Player {
     chooseGesture(){
       console.log("chooseGesture")
 
-      this.gestures
-      //work on this tmrw
-
-
+      let gameGestures = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+      for(Let index = 0; index < gameGestures.length; index++){
+        if (gestures[index] === 0){
+          return(chosenGesture.rock)
+      }
+      else {
+        if(gestures[index] === 1){
+          return(chosenGesture.paper)
+        }
+      }
 
       //take user input to select a gesture
       this.chosenGesture =  //set equal to a gesture
